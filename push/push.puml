@@ -1,0 +1,17 @@
+@startuml
+autonumber
+note left SumBankAPP:
+note left LemonCareApp :
+note left LemonPushServer :
+EMR -> EMR : 진료 예약 알림(D-1) 일배치(확인)
+EMR -> EMR : 고객별 푸시 요청 Data 세팅
+EMR -> LemonPushServer : 진료예약 알림 푸시 요청
+LemonPushServer -> LemonCareApp : 환자용 APP 푸시 발송
+LemonPushServer -> LemonPushServer : 부산은행 SumBank 회원 여부 조회
+
+group sumbank 회원이면
+LemonPushServer -> SumBankAPP : SumBankAPP 푸시 발송
+end
+
+LemonPushServer -> EMR : 푸시 성공여부 응답
+@enduml

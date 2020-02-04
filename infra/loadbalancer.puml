@@ -1,0 +1,13 @@
+@startuml
+autonumber
+note left Client:
+note left L4 :
+note left Web :
+note left App :
+
+Client -> L4 : mcare.lemonhc.com 도메인으로 요청
+L4 -> Web: Web1,2 check.html 헬스체크 후 Web 프록시로 전달(ip hash)
+Web -> App: 2차도메인, context 구분에 따라 각 어플리케이션으로 분기
+
+
+@enduml

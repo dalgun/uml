@@ -1,0 +1,15 @@
+@startuml
+autonumber
+note left LemonCareApp:
+note left KIS :
+note left SKP :
+note left QAB :
+
+LemonCareApp -> KIS : 토큰 등록 화면 요청
+KIS -> SKP : 사용자 입력 파라미터로 SKP 토큰 등록 요청
+SKP -> KIS : 토큰 등록 결과 응답
+KIS -> LemonCareApp : 토큰 등록 결과 응답
+LemonCareApp -> QAB : 응답받은 토큰 등록 결과로 병원 QAB에 정보 등록
+QAB -> LemonCareApp : 등록에 대한 결과 응답
+
+@enduml
