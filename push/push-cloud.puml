@@ -1,0 +1,22 @@
+@startuml
+autonumber
+note left LemonCareApp:
+note left Hospital:
+note left LemonMobileApi :
+note left LemonAdminApi :
+note left LemonPushServer :
+note left FCM :
+
+Hospital -> LemonMobileApi: 푸시 발송 요청
+LemonMobileApi -> LemonAdminApi : 앱정보 및 사용자 조회 요청
+LemonAdminApi -> LemonMobileApi : 앱정보 및 사용자 조회 응답
+LemonMobileApi -> LemonPushServer : 푸시발송을 위한 전문 생성 후 레몬 푸시 서버 요청
+LemonPushServer -> FCM : 푸시 이력 관리를 위한 데이터 저장 및 FCM 발송 요청
+FCM -> LemonCareApp : FCM 푸시 발송 요청
+LemonCareApp -> FCM : FCM 푸시 결과 응답
+FCM -> LemonPushServer : FCM 푸시 결과 응답
+LemonPushServer -> LemonMobileApi : FCM 푸시 결과 응답
+LemonMobileApi -> Hospital : 레몬 푸시 결과 응답
+
+
+@enduml
