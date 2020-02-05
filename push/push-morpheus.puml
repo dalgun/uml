@@ -1,0 +1,31 @@
+@startuml
+autonumber
+note left LemonCareApp:
+note left Hospital:
+note left Morpheus:
+note left LemonAdminApi :
+note left LemonPushServer :
+note left FCM :
+
+Hospital -> Morpheus: 푸시 발송 요청
+
+alt first case
+
+Morpheus -> LemonAdminApi : 앱정보 및 사용자 조회 요청
+LemonAdminApi -> Morpheus : 앱정보 및 사용자 조회 응답
+
+else second case
+Morpheus -> Morpheus : 동기화된 디바이스토큰 정보 조
+end
+
+
+Morpheus -> FCM : FCM 푸시 발송 요청
+FCM -> LemonCareApp: 사용자 푸시
+FCM -> Morpheus : FCM 푸시 결과 응답
+Morpheus -> Hospital : 푸시 결과 응
+
+Morpheus -> LemonPushServer :푸시 이력 관리를 위한 데이터 저장
+
+
+
+@enduml
